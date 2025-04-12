@@ -1,0 +1,37 @@
+name: Backlog Wiki Sync
+
+on:
+  # *notice: 本レポジトリではpushでの実行は停止している。実際に使用する場合は適当なトリガー条件を設定する
+  # push:
+  #   branches: main
+  #   paths:
+  #     - docs/**
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  BACKLOG_API_KEY: ${{ secrets.BACKLOG_API_KEY }}
+  BACKLOG_SPACE_ID: xxxx
+  BACKLOG_PROJECT_ID: xxxx
+  DELETE_MODE: false
+
+jobs:
+  sync:
+    name: Sync
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Sync
+        run: python backlog_wiki_sync.py

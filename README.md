@@ -48,9 +48,9 @@ env:
 - 同期するマークダウンファイルは`docs`配下に配置する
 - 同期先のBacklogWikiの階層は`docs`配下にディレクトリを作成して表現する
   - `docs`直下がBacklogWikiのトップ階層
-- ドキュメント内に埋め込むファイル(ローカル)は`files`配下に配置(直下に配置すること)し、相対パスで指定する
-  - 画像リンクは`![hoge](../files/hoge.png)`のように指定する
-  - ファイルリンクは`[fuga](../files/fuga.pdf)`のように指定する
+- ドキュメント内に埋め込むファイル(ローカル)は`/files`配下に配置し、パスはルートからの相対パスで指定する
+  - 画像リンクは`![hoge](/files/hoge.png)`のように指定する
+  - ファイルリンクは`[fuga](/files/fuga.pdf)`のように指定する
 - BacklogWikiページの削除
   - GitHub Actionsのenvにある`DELETE_MODE`を`true`にすると、`docs`配下に存在しないBacklogWikiページは削除される
 

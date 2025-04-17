@@ -1,2 +1,2 @@
 # fuga
-[hayabusa](../files/bird_hayabusa.png)
+[hayabusa](/files/bird_hayabusa.png)

@@ -177,9 +177,9 @@ class BacklogWikiSync:
         # 既存の添付ファイルを取得
         existing_attachments = {att['name']: att['id'] for att in self.get_wiki_attachments(wiki_id)}
 
-        # 画像参照とファイルリンクを検出する正規表現パターン(ローカルファイル(パスが..で始まる)に限る)
-        image_pattern = r'!\[(.*?)\]\((\.\./.*)\)'
-        file_pattern = r'(?<!!)\[(.*?)\]\((\.\./.*)\)'
+        # 画像参照とファイルリンクを検出する正規表現パターン(パスが/files/で始まるに限る)
+        image_pattern = r'!\[(.*?)\]\((/files/.*)\)'
+        file_pattern = r'(?<!!)\[(.*?)\]\((/files/.*)\)'
 
         # コンテンツ内の画像参照を検出し、リストに格納
         image_matches = list(re.finditer(image_pattern, content))
